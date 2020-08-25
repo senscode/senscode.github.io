@@ -2,9 +2,9 @@ $( document ).ready(function() {
     console.log( "ready!" );
 
     //default storage
-    var handsPlayed = localStorage.getItem(handsPlayed);
-    var handsCalled = localStorage.getItem(handsCalled);
-    var handsRaised = localStorage.getItem(handsRaised);
+    var handsPlayed = localStorage.getItem('handsPlayed');
+    var handsCalled = localStorage.getItem('handsCalled');
+    var handsRaised = localStorage.getItem('handsRaised');
 
     if (!handsPlayed && handsPlayed != 0) {
         localStorage.setItem("handsPlayed", 0);
