@@ -273,14 +273,14 @@ $( document ).ready(function() {
         lastHandRightAnswer = handsData[lastHand];
         var splitAnswer = lastHandRightAnswer.split("/");
 
-        var generateFirstAnswer = "" + (parseInt(splitAnswer[0])  + randInt(0,3));
-        var generateSecondAnswer = "" + (parseInt(splitAnswer[0])  + randInt(0,3));
-        var generateThirdAnswer = "" + (parseInt(splitAnswer[0])  + randInt(0,3));
+        var generateFirstAnswer = "" + (parseInt(splitAnswer[0])  + randInt(0,4) - + randInt(0,1));
+        var generateSecondAnswer = "" + (parseInt(splitAnswer[0])  + randInt(0,3) - + randInt(0,1));
+        var generateThirdAnswer = "" + (parseInt(splitAnswer[0])  + randInt(0,3) - + randInt(0,1));
         
         if (splitAnswer[1]) {
-            generateFirstAnswer += "/" + (parseInt(splitAnswer[1])  + randInt(0,3));
-            generateSecondAnswer += "/" + (parseInt(splitAnswer[1])  + randInt(0,3));
-            generateThirdAnswer += "/" + (parseInt(splitAnswer[1])  + randInt(0,3));
+            generateFirstAnswer += "/" + (parseInt(splitAnswer[1])  + randInt(0,3) - + randInt(0,1));
+            generateSecondAnswer += "/" + (parseInt(splitAnswer[1])  + randInt(0,3) - + randInt(0,1));
+            generateThirdAnswer += "/" + (parseInt(splitAnswer[1])  + randInt(0,3) - + randInt(0,1));
         }
 
         var arrayOfAnswers = [lastHandRightAnswer, generateFirstAnswer, generateSecondAnswer, generateThirdAnswer];
