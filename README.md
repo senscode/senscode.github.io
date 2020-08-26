@@ -1,4 +1,2 @@
 # senscode.github.io-
-fffd
-ff
-g
+Memorize - ranges quiz
