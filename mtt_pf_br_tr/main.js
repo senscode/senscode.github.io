@@ -108,6 +108,125 @@ $( document ).ready(function() {
         "32": "93/100"
     }
 
+    var handsDataA = {
+        "AA": "1",
+        "AK": "2/3",
+        "AQ": "4/4",
+        "AJ": "5/11",
+        "AT": "6/17",
+        "A9": "10/19",
+        "A8": "14/21",
+        "A7": "17/24",
+        "A6": "17/27",
+        "A5": "10/27",
+        "A4": "17/32",
+        "A3": "17/35",
+        "A2": "17/37"
+    }
+    var handsDataK = {
+        "KK": "1",
+        "KQ": "6/12",
+        "KJ": "8/17",
+        "KT": "8/21",
+        "K9": "12/30",
+        "K8": "21/37",
+        "K7": "23/39",
+        "K6": "27/42",
+        "K5": "30/44",
+        "K4": "32/47",
+        "K3": "35/55",
+        "K2": "37/55"
+    }
+    var handsDataQ = {
+        "QQ": "2",
+        "QJ": "8/23",
+        "QT": "8/27",
+        "Q9": "13/35",
+        "Q8": "27/42",
+        "Q7": "35/52",
+        "Q6": "35/55",
+        "Q5": "39/55",
+        "Q4": "42/60",
+        "Q3": "44/70",
+        "Q2": "47/70"
+    }
+    var handsDataJ = {
+        "JJ": "3",
+        "JT": "8/27",
+        "J9": "13/39",
+        "J8": "27/47",
+        "J7": "35/60",
+        "J6": "44/70",
+        "J5": "47/80",
+        "J4": "50/80",
+        "J3": "50/80",
+        "J2": "60/80"
+    }
+    var handsDataT = {
+        "TT": "5",
+        "T9": "12/42",
+        "T8": "27/47",
+        "T7": "35/60",
+        "T6": "50/70",
+        "T5": "60/80",
+        "T4": "70/80",
+        "T3": "70/85",
+        "T2": "70/93"
+    }
+    var handsData9 = {
+        "99": "6",
+        "98": "19/50",
+        "97": "32/60",
+        "96": "65/80",
+        "95": "70/80",
+        "94": "85/85",
+        "93": "70/93",
+        "92": "80/93"
+    }
+    var handsData8 = {
+        "88": "10",
+        "87": "30/60",
+        "86": "37/65",
+        "85": "65/80",
+        "84": "85/85",
+        "83": "80/93",
+        "82": "80/93"
+    }
+    var handsData7 = {
+        "77": "10",
+        "76": "30/65",
+        "75": "50/80",
+        "74": "65/85",
+        "73": "80/93",
+        "72": "93/100"
+    }
+    var handsData6 = {
+        "66": "10",
+        "65": "37/80",
+        "64": "50/85",
+        "63": "65/93",
+        "62": "93/100"
+    }
+    var handsData5 = {
+        "55": "14",
+        "54": "50/85",
+        "53": "100/93",
+        "52": "100/100"
+    }
+    var handsData4 = {
+        "44": "17",
+        "43": "65/93",
+        "42": "93/100"
+    }
+    var handsData3 = {
+        "33": "19",
+        "32": "93/100"
+    }
+    var handsData2 = {
+        "22": "22"
+    }
+
+    var handsDataBasedOnSettings = {};
     var lastHand;
     var lastHandRandomAsnwers;
     var lastHandRightAnswer;
@@ -116,6 +235,9 @@ $( document ).ready(function() {
     var totalHands = 0;
     var winRate = 0;
     var handsWinned = 0;
+
+    var checkedCards = {};
+    var handsDataCheckedCards = {};
 
     //storage data init
     if (localStorage.getItem("totalHands") === null) {
@@ -134,6 +256,37 @@ $( document ).ready(function() {
 
 
     // buttons logic
+
+    $(".card-input").on("change", function(event) {
+        checkedCards = {
+            "A" : ($('input[name=A]').is(":checked")) ? handsDataA : false,
+            "K" : $('input[name=K]').is(":checked") ? handsDataK : false,
+            "Q" : $('input[name=Q]').is(":checked") ? handsDataQ : false,
+            "J" : $('input[name=J]').is(":checked") ? handsDataJ : false,
+            "T" : $('input[name=T]').is(":checked") ? handsDataT : false,
+            "9" : $('input[name=9]').is(":checked") ? handsData9 : false,
+            "8" : $('input[name=8]').is(":checked") ? handsData8 : false,
+            "7" : $('input[name=7]').is(":checked") ? handsData7 : false,
+            "6" : $('input[name=6]').is(":checked") ? handsData6 : false,
+            "5" : $('input[name=5]').is(":checked") ? handsData5 : false,
+            "4" : $('input[name=4]').is(":checked") ? handsData4 : false,
+            "3" : $('input[name=3]').is(":checked") ? handsData3 : false,
+            "2" : $('input[name=2]').is(":checked") ? handsData2 : false
+        }
+
+        $.each(checkedCards, function(indx,val) {
+            
+            if(checkedCards[indx]) {
+                Object.assign(handsDataCheckedCards, checkedCards[indx]);
+            }
+            
+        });
+        
+        console.log(checkedCards)
+
+        generateHandAndAnswersAndRender();
+
+    });
     
     $(".stats-reset-btn").on("click", function(event) {
         event.preventDefault();
@@ -265,7 +418,17 @@ $( document ).ready(function() {
     }
 
     function pickRandomHand() {
-        var keys = Object.keys(handsData);
+
+        var keys;
+
+        if($.isEmptyObject(checkedCards)) {
+            keys = Object.keys(handsData);
+        } else {
+            keys = Object.keys(handsDataCheckedCards);
+        }
+
+        //console.log(handsDataCheckedCards)
+
         return keys[ keys.length * Math.random() << 0];
     }
 

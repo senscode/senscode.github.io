@@ -19,6 +19,33 @@
     justify-content: center;
 }
 
+.settings {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+input[type="checkbox"]:checked+label {
+     font-weight: bold;
+     color: #a0a0a0;
+}
+
+.settings-card {
+    padding: 6px;
+    background-color: rgb(56 79 79);
+    color: #090909;
+    cursor: pointer;
+    user-select: none;
+}
+
+.settings label:first-of-type {
+    border-radius: 5px 0 0 5px;
+}
+
+.settings label:last-of-type {
+    border-radius: 0 5px 5px 0;
+}
+
 .btn {
     border-radius: 2px;
     box-shadow: 0px 0px 5px 1px #1b1b1b;
