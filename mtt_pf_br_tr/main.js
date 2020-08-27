@@ -258,6 +258,9 @@ $( document ).ready(function() {
     // buttons logic
 
     $(".card-input").on("change", function(event) {
+
+        $(".quiz-start").addClass("hidden");
+        
         checkedCards = {
             "A" : ($('input[name=A]').is(":checked")) ? handsDataA : false,
             "K" : $('input[name=K]').is(":checked") ? handsDataK : false,
