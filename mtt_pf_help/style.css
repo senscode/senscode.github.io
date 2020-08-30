@@ -64,9 +64,9 @@ input[type="checkbox"]:checked+label {
     cursor: pointer;
 }
 
-.main-quiz {
+/* .main-quiz {
     margin-left: 40px;
-}
+} */
 
 .main-quiz-hand {
     margin: 8px 0;
