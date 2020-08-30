@@ -42,6 +42,10 @@ input[type="checkbox"]:checked+label {
     user-select: none;
 }
 
+body {
+    user-select: none;
+}
+
 .settings label:first-of-type {
     border-radius: 5px 0 0 5px;
 }
@@ -141,6 +145,7 @@ input[type="checkbox"]:checked+label {
 .table-data {
     color: #000;
     font-size: 18px;
+    background-color: #356062 !important;
 }
 
 .row-5bb .col-bb,
@@ -164,7 +169,7 @@ input[type="checkbox"]:checked+label {
 .table-col-set {
     background-color: #233f41;
     width: 36px;
-    height: 25px;
+    height: 27px;
     justify-content: center;
     align-items: center;
 }
@@ -175,7 +180,8 @@ input[type="checkbox"]:checked+label {
 }
 
 .offsuited-col {
-    background-color: #2b5b6a;
+    /* background-color: #2b5b6a; */
+    background-color: #367cad;
     color: #cfcfcf;
 }
 
@@ -191,6 +197,29 @@ input[type="checkbox"]:checked+label {
     /* font-size: 18px; */
 }
 
+.col-ut,
+.col-u2,
+.col-u3,
+.col-lj,
+.col-hj,
+.col-co,
+.col-bu {
+    border-right: 1px solid #305658;
+}
+
+.row-5bb,
+.row-10bb,
+.row-15bb,
+.row-st {
+    border-bottom: 1px solid #305658; 
+}
+
+/* .col-u2,
+.col-lj,
+.col-co {
+    border-right: 1px solid #305658;
+} */
+
 
 
 
@@ -199,6 +228,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     background-color: rgb(17, 30, 41);
     color: #5c5f5e;
+    box-sizing: border-box;
     /* text-shadow: 1px 1px 2px #4a4a4a; */
 }
 
