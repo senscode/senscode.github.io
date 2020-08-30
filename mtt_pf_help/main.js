@@ -222,6 +222,7 @@ $( document ).ready(function() {
         } else {
 
             firstCard = event.target.innerText;
+            $(".quiz-hand-data").text(firstCard + " _");
             // console.log(firstCard)
 
         }
