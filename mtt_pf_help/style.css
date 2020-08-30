@@ -70,7 +70,7 @@ input[type="checkbox"]:checked+label {
 }
 
 .main-quiz-hand {
-    margin-bottom: 10px;
+    margin-top: 15px;
     font-size: 40px;
     display: flex;
     justify-content: center;
@@ -140,6 +140,7 @@ input[type="checkbox"]:checked+label {
 
 .table-data {
     color: #000;
+    font-size: 18px;
 }
 
 .row-5bb .col-bb,
@@ -187,6 +188,7 @@ input[type="checkbox"]:checked+label {
     margin: 15px 0px;
     font-family: monospace;
     color: #4f5b65;
+    /* font-size: 18px; */
 }
 
 
